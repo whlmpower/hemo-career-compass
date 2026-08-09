@@ -127,27 +127,8 @@ hemo-career-compass/
 2. **多轮对话**：Agent 需要支持上下文保持，能够跨轮次引用之前的对话内容
 3. **文件写入**：如果需要支持多 Session，Agent 需要能够写入会话摘要文件
 
-## 开发说明
 
-### 如何测试
-
-1. 将 `.trae/skills/hemo-career-compass/` 目录放到项目根目录
-2. 在 AI Agent 中触发 Skill（见 `SKILL.md` 中的触发条件）
-3. AI 应自动读取 `prompts/system.md` 作为系统提示词
-4. 根据对话状态，AI 应引用 `prompts/warmup.md`、`prompts/socratic.md`、`frameworks/*.md` 等文件
-
-### 核心文件说明
-
-| 文件 | 用途 | 重要性 |
-|---|---|---|
-| `prompts/system.md` | AI 的「灵魂」，定义角色、原则、对话策略、诊断框架 | 极高 |
-| `prompts/socratic.md` | 苏格拉底式提问策略库，是产品的核心竞争力 | 极高 |
-| `references/insights.md` | 通用金句库，作为诊断话术的弹药 | 高 |
-| `prompts/report.md` | 报告生成模板，定义输出结构和话术 | 高 |
-| `frameworks/*.md` | 5 个心理学维度的详细定义和诊断逻辑 | 中 |
-| `referencers/*/` | 参照系模块，定义不同职业路径的专属分析 | 中 |
-
-### 迭代方向
+## 迭代方向
 
 1. **v1.0**：基础框架 + 5 个维度 + 大厂/国企参照系
 2. **v1.1（当前）**：扩展多参照系（考公、外企、创业）+ 动态权重矩阵 + 价值观冲突检测 + 压力类型分析 + 决策风格分析 + Mermaid 可视化 + 伦理边界声明
