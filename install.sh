@@ -69,6 +69,11 @@ detect_agents() {
         agents+=("codex")
     fi
     
+    # 检测 Claude Code
+    if [ -d "$home/.claude/skills" ]; then
+        agents+=("claude")
+    fi
+    
     # 检测千问办公
     if [ -d "$home/.qwenworkcn/skills" ] || [ -d "$home/.qwen/skills" ]; then
         agents+=("qwen")
@@ -108,6 +113,12 @@ get_agent_global_dir() {
                 echo "$home/.agents/skills"
             fi
             ;;
+        claude)
+            # Claude Code: ~/.claude/skills
+            if [ -d "$home/.claude/skills" ]; then
+                echo "$home/.claude/skills"
+            fi
+            ;;
         qwen)
             # 千问办公: 优先 ~/.qwenworkcn/skills，其次 ~/.qwen/skills
             if [ -d "$home/.qwenworkcn/skills" ]; then
@@ -138,6 +149,9 @@ is_agent_running() {
             ;;
         codex)
             pgrep -f -i "codex" > /dev/null 2>&1 && return 0 || return 1
+            ;;
+        claude)
+            pgrep -f -i "claude" > /dev/null 2>&1 && return 0 || return 1
             ;;
         qwen)
             pgrep -f -i "qwen" > /dev/null 2>&1 && return 0 || return 1

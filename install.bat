@@ -59,6 +59,11 @@ set USER_HOME=%USERPROFILE%
         call :add_agent "codex" "%USER_HOME%\.agents\skills"
     )
     
+    :: 检测 Claude Code
+    if exist "%USER_HOME%\.claude\skills" (
+        call :add_agent "claude" "%USER_HOME%\.claude\skills"
+    )
+    
     :: 检测千问办公
     if exist "%USER_HOME%\.qwenworkcn\skills" (
         call :add_agent "qwen" "%USER_HOME%\.qwenworkcn\skills"

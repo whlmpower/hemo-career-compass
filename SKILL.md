@@ -1,6 +1,6 @@
 ---
 name: "hemo-career-compass"
-description: "通过大厂/国企参照系进行职业自我认知诊断。跨平台支持 Trae Code、Codex CLI、千问办公、WorkBuddy。Invoke when user asks about career choice between big tech and SOE, or expresses career confusion."
+description: "通过大厂/国企参照系进行职业自我认知诊断。跨平台支持 Trae Code、Codex CLI、Claude Code、千问办公、WorkBuddy。Invoke when user asks about career choice between big tech and SOE, or expresses career confusion."
 ---
 
 # hemo-career-compass
@@ -71,6 +71,7 @@ hemo-career-compass/
 |---|---|---|---|
 | Trae Code | `.trae/skills/` | `~/.trae/skills/` | `%userprofile%/.trae/skills/` |
 | Codex CLI | `.agents/skills/` 或 `.codex/skills/` | `~/.codex/skills/` | `%userprofile%/.codex/skills/` |
+| Claude Code | `.claude/skills/` | `~/.claude/skills/` | `%userprofile%\.claude\skills\` |
 | 千问办公 | `.qwen/skills/` | `~/.qwenworkcn/skills/` | `%userprofile%/.qwenworkcn/skills/` |
 | WorkBuddy | 不支持 | `~/.workbuddy/skills/` | `C:\Users\<用户名>\.workbuddy\skills\` |
 
