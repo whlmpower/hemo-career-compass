@@ -1,0 +1,89 @@
+---
+name: "hemo-career-compass"
+description: "通过大厂/国企参照系进行职业自我认知诊断。跨平台支持 Trae Code、Codex CLI、千问办公、WorkBuddy。Invoke when user asks about career choice between big tech and SOE, or expresses career confusion."
+---
+
+# hemo-career-compass
+
+职业罗盘。通过「大厂 vs 国企」这两个参照系，帮助应届生深度挖掘内心，完成对未来生活期望的梳理，看清自己到底想要什么。
+
+## 触发条件
+
+当用户表达以下意图时，触发本 Skill：
+- 询问「大厂和国企怎么选」
+- 表达职业选择迷茫、纠结
+- 询问职业规划、未来方向
+- 想要了解自己适合什么样的工作
+- 提到「央企」「体制内」「互联网」「稳定」「高薪」等关键词
+
+## 使用方式
+
+本 Skill 采用**自适应对话式诊断**流程，AI 作为「犀利诊断师」角色，通过多轮苏格拉底式提问，帮助用户完成自我认知深化。
+
+### 核心流程
+
+1. **暖启动**：建立信任，说明流程，管理预期
+2. **基础信息采集**：家庭背景、个人履历、消费习惯、焦虑清单、决策风格
+3. **深层诊断**：自适应展开 5 个心理学维度（大五人格、施恩职业锚、施瓦茨价值观、依恋类型、风险容忍度）
+4. **综合诊断**：整合发现，识别矛盾和盲区
+5. **报告输出**：经用户确认后，输出「自我认知雷达图 + 详细解读」
+
+### 文件结构
+
+```
+hemo-career-compass/
+├── SKILL.md              # 本文件（AI 核心入口）
+├── README.md             # 用户文档，包含安装说明
+├── install.sh            # macOS/Linux 一键安装脚本
+├── install.bat           # Windows 一键安装脚本
+├── docs/
+│   └── developer.md      # 开发者详细说明
+├── prompts/
+│   ├── system.md         # 系统提示词（核心，5层架构）
+│   ├── warmup.md         # 暖启动话术库
+│   ├── socratic.md       # 苏格拉底式提问话术库
+│   └── report.md         # 报告生成模板
+├── frameworks/
+│   ├── bigfive.md        # 大五人格诊断框架
+│   ├── schein.md         # 施恩职业锚框架
+│   ├── schwartz.md       # 施瓦茨价值观框架
+│   ├── attachment.md     # 依恋类型框架
+│   └── risk-tolerance.md # 风险容忍度框架
+└── references/
+    └── insights.md       # 两篇资料的核心洞察和金句库
+```
+
+### 关键原则
+
+- **不替用户做选择**：只照见，不建议
+- **案例优先**：要求用户提供具体经历，而非抽象选项
+- **犀利但慈悲**：挑战假设，但不评判
+- **自适应轮次**：根据用户回答深度动态决定对话轮次，不固定问题数量
+- **多 Session 支持**：支持用户带着新案例回来继续探索
+
+## 平台兼容性
+
+本 Skill 采用标准格式设计，支持跨平台安装：
+
+### 支持的平台
+
+| 平台 | 项目级 | 全局级 (macOS/Linux) | 全局级 (Windows) |
+|---|---|---|---|
+| Trae Code | `.trae/skills/` | `~/.trae/skills/` | `%userprofile%/.trae/skills/` |
+| Codex CLI | `.agents/skills/` 或 `.codex/skills/` | `~/.codex/skills/` | `%userprofile%/.codex/skills/` |
+| 千问办公 | `.qwen/skills/` | `~/.qwenworkcn/skills/` | `%userprofile%/.qwenworkcn/skills/` |
+| WorkBuddy | 不支持 | `~/.workbuddy/skills/` | `C:\Users\<用户名>\.workbuddy\skills\` |
+
+### 安装方式
+
+推荐使用一键安装脚本，详见 `README.md`。
+
+### 兼容性要求
+
+1. **文件读取**：Agent 需要能够读取本地文件系统（`prompts/`、`frameworks/`、`references/` 目录）
+2. **多轮对话**：Agent 需要支持上下文保持，能够跨轮次引用之前的对话内容
+3. **文件写入**：如果需要支持多 Session，Agent 需要能够写入会话摘要文件
+
+## 版本历史
+
+- v1.0.0 (2026-08-09): 初始版本，包含 5 个心理学维度、自适应对话流程、报告模板、跨平台安装脚本
