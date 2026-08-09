@@ -35,6 +35,38 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/whlmpower/hemo-career-
 2. 将 `hemo-career-compass/` 目录复制到对应平台的 Skill 目录
 3. 重启 AI Agent
 
+### 方式三：让智能体自动安装（推荐）
+
+如果你正在使用支持 Skill 的 AI Agent，可以直接让 Agent 帮你安装：
+
+**操作步骤：**
+
+1. 在当前对话中，输入以下指令：
+
+```
+请你帮我安装以下 Skill：
+
+https://github.com/whlmpower/hemo-career-compass
+```
+
+2. Agent 会自动完成以下操作：
+   - 克隆仓库到本地
+   - 将 `hemo-career-compass/` 目录复制到对应平台的 Skill 目录
+   - 重启或重新加载 Skill
+
+3. 安装完成后，输入触发词测试：
+   - 「大厂和国企怎么选」
+   - 「考公还是去企业」
+   - 「要不要创业」
+
+**适用平台：**
+- Trae Code
+- Codex CLI
+- Claude Code
+- 千问办公
+- WorkBuddy
+- 其他支持 Skill 的 AI Agent
+
 ## 验证安装
 
 安装完成后，在 AI Agent 中输入触发词：
