@@ -1,6 +1,6 @@
 ---
 name: "hemo-career-compass"
-description: "通过多参照系（大厂/国企、考公、外企、创业）进行职业自我认知诊断。跨平台支持 Trae Code、Codex CLI、Claude Code、千问办公、WorkBuddy。Invoke when user asks about career choice or expresses career confusion."
+description: "通过多参照系进行职业自我认知诊断。Invoke when user asks about career choice between big tech/SOE/civil service/foreign enterprise/startup, or expresses career confusion."
 ---
 
 # hemo-career-compass
