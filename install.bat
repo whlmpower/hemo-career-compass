@@ -71,7 +71,7 @@ set USER_HOME=%USERPROFILE%
         call :add_agent "workbuddy" "%USER_HOME%\.workbuddy\skills"
     )
     
-    endlocal & set AGENTS=%agents%
+    endlocal & set AGENTS=!agents!
     goto :eof
 
 :add_agent
@@ -144,6 +144,20 @@ set USER_HOME=%USERPROFILE%
     exit /B 0
 
 :: ============================================================
+:: 5. 辅助函数：添加选项
+:: ============================================================
+
+:add_option
+    if defined options (
+        set options=%options%;%~1
+        set descriptions=%descriptions%;%~2
+    ) else (
+        set options=%~1
+        set descriptions=%~2
+    )
+    goto :eof
+
+:: ============================================================
 :: 主程序
 :: ============================================================
 
@@ -183,7 +197,8 @@ if "%AGENTS%"=="" (
     )
 ) else (
     call :log_success "检测到以下 Agent:"
-    for %%a in (%AGENTS:;= %) do (
+    :: 直接解析 AGENTS 字符串显示
+    for %%a in (%AGENTS%) do (
         echo   - %%a
     )
     echo.
@@ -196,16 +211,16 @@ echo.
 set options=
 set descriptions=
 
-:: 解析检测到的 Agent
-for %%a in (%AGENTS:;= %) do (
+:: 解析检测到的 Agent（每个 agent 存储为 name;path）
+for %%a in (%AGENTS%) do (
     for /f "tokens=1,2 delims=;" %%i in ("%%a") do (
-        call :add_option "%%i" "%%i (全局) -^> %%j"
+        call :add_option "%%i" "%%i (全局)"
     )
 )
 
 :: 添加"所有已检测到的 Agent"
 set agent_count=0
-for %%a in (%AGENTS:;= %) do set /a agent_count+=1
+for %%a in (%AGENTS%) do set /a agent_count+=1
 if !agent_count! gtr 1 (
     call :add_option "all" "安装到所有已检测到的 Agent"
 )
@@ -215,9 +230,9 @@ call :add_option "custom" "自定义安装路径"
 
 :: 显示选项
 set i=0
-for %%o in (%options%) do (
+for %%d in (%descriptions%) do (
     set /a i+=1
-    echo !i!. !descriptions[!i!]!
+    echo !i!. %%d
 )
 
 echo.
@@ -249,7 +264,7 @@ if "!selected_option!"=="" (
 if "!selected_option!"=="all" (
     call :log_info "安装到所有已检测到的 Agent..."
     set all_success=true
-    for %%a in (%AGENTS:;= %) do (
+    for %%a in (%AGENTS%) do (
         for /f "tokens=1,2 delims=;" %%i in ("%%a") do (
             call :install_skill "%SOURCE_DIR%" "%%j" "%%i" "global"
             if !ERRORLEVEL! neq 0 set all_success=false
@@ -271,7 +286,7 @@ if "!selected_option!"=="all" (
 ) else (
     :: 查找对应 Agent 的目录
     set target_dir=
-    for %%a in (%AGENTS:;= %) do (
+    for %%a in (%AGENTS%) do (
         for /f "tokens=1,2 delims=;" %%i in ("%%a") do (
             if "%%i"=="!selected_option!" set target_dir=%%j
         )
