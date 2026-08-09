@@ -217,6 +217,22 @@ verify_installation() {
 }
 
 # ============================================================
+# 7. 兼容性包装：用 while read 替代 mapfile
+# ============================================================
+
+detect_agents_compat() {
+    local agents=()
+    while IFS= read -r line; do
+        [ -n "$line" ] && agents+=("$line")
+    done < <(detect_agents)
+    
+    # 输出为可读格式
+    for agent in "${agents[@]}"; do
+        echo "$agent"
+    done
+}
+
+# ============================================================
 # 主程序
 # ============================================================
 
@@ -245,7 +261,20 @@ main() {
     
     # 检测已安装的 Agent
     log_info "正在检测已安装的 AI Agent..."
-    mapfile -t DETECTED_AGENTS < <(detect_agents)
+    
+    # 兼容性处理：优先使用 mapfile，降级使用 while read
+    DETECTED_AGENTS=()
+    if [ -n "${BASH_VERSION:-}" ] && [ "${BASH_VERSINFO[0]}" -ge 4 ]; then
+        # bash 4.0+ 支持 mapfile
+        while IFS= read -r line; do
+            [ -n "$line" ] && DETECTED_AGENTS+=("$line")
+        done < <(detect_agents)
+    else
+        # 旧版 bash 或 sh，使用兼容方式
+        while IFS= read -r line; do
+            [ -n "$line" ] && DETECTED_AGENTS+=("$line")
+        done < <(detect_agents)
+    fi
     
     if [ ${#DETECTED_AGENTS[@]} -eq 0 ]; then
         log_warn "未检测到已安装的 AI Agent"
@@ -317,7 +346,10 @@ main() {
             local all_success=true
             for agent in "${DETECTED_AGENTS[@]}"; do
                 local_dir=$(get_agent_global_dir "$agent")
-                if ! install_skill "$SOURCE_DIR" "$local_dir" "$agent" "global"; then
+                # 修复：移除 ! ，正确判断返回值
+                if install_skill "$SOURCE_DIR" "$local_dir" "$agent" "global"; then
+                    :
+                else
                     all_success=false
                 fi
             done
