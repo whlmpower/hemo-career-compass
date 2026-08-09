@@ -8,12 +8,12 @@
 
 **macOS / Linux:**
 ```bash
-curl -sL https://raw.githubusercontent.com/your-repo/main/install.sh | bash
+curl -sL https://raw.githubusercontent.com/whlmpower/hemo-career-compass/main/install.sh | bash
 ```
 
 **Windows (PowerShell):**
 ```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/your-repo/main/install.bat" -OutFile "install.bat"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/whlmpower/hemo-career-compass/main/install.bat" -OutFile "install.bat"
 .\install.bat
 ```
 
