@@ -1,0 +1,16 @@
+{
+  "id": "bigtech-vs-soe",
+  "name": "大厂 vs 国企",
+  "description": "互联网大厂与国央企的职业选择分析",
+  "target_audience": "985/211 应届生",
+  "core_tension": "高薪成长 vs 稳定安全",
+  "active": true,
+  "weights": {
+    "achievement": 90,
+    "security": 30,
+    "autonomy": 85,
+    "influence": 80,
+    "growth_speed": 95,
+    "work_life_boundary": 40
+  }
+}

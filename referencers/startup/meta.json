@@ -1,0 +1,16 @@
+{
+  "id": "startup",
+  "name": "创业",
+  "description": "从0到1创业、加入早期创业团队、自由职业等非传统路径分析",
+  "target_audience": "有强烈自主性需求、风险承受力较高、渴望创造而非执行的求职者",
+  "core_tension": "自主创造与无限可能 vs 不确定性、资源约束与心理压力",
+  "active": true,
+  "weights": {
+    "achievement": 95,
+    "security": 20,
+    "autonomy": 100,
+    "influence": 90,
+    "growth_speed": 90,
+    "work_life_boundary": 35
+  }
+}

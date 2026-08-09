@@ -1,0 +1,16 @@
+{
+  "id": "foreign-enterprise",
+  "name": "外企",
+  "description": "欧美、日韩等外资企业的职业路径分析",
+  "target_audience": "考虑跨文化职业发展、追求工作生活平衡的求职者",
+  "core_tension": "全球化视野与职业规范 vs 落地天花板与不确定性",
+  "active": true,
+  "weights": {
+    "achievement": 70,
+    "security": 50,
+    "autonomy": 65,
+    "influence": 60,
+    "growth_speed": 70,
+    "work_life_boundary": 75
+  }
+}

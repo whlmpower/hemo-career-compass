@@ -1,0 +1,16 @@
+{
+  "id": "civil-service",
+  "name": "考公 / 体制内",
+  "description": "公务员、事业单位、选调生等体制内职业路径分析",
+  "target_audience": "应届生、工作1-3年考虑转向体制内的人",
+  "core_tension": "稳定与意义感 vs 天花板与机会成本",
+  "active": true,
+  "weights": {
+    "achievement": 50,
+    "security": 95,
+    "autonomy": 30,
+    "influence": 70,
+    "growth_speed": 25,
+    "work_life_boundary": 85
+  }
+}

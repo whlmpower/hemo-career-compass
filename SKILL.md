@@ -1,6 +1,6 @@
 ---
 name: "hemo-career-compass"
-description: "通过大厂/国企参照系进行职业自我认知诊断。跨平台支持 Trae Code、Codex CLI、Claude Code、千问办公、WorkBuddy。Invoke when user asks about career choice between big tech and SOE, or expresses career confusion."
+description: "通过多参照系（大厂/国企、考公、外企、创业）进行职业自我认知诊断。跨平台支持 Trae Code、Codex CLI、Claude Code、千问办公、WorkBuddy。Invoke when user asks about career choice or expresses career confusion."
 ---
 
 # hemo-career-compass
@@ -11,10 +11,13 @@ description: "通过大厂/国企参照系进行职业自我认知诊断。跨�
 
 当用户表达以下意图时，触发本 Skill：
 - 询问「大厂和国企怎么选」
+- 询问「考公还是去企业」
+- 询问「外企怎么样」
+- 询问「要不要创业」
 - 表达职业选择迷茫、纠结
 - 询问职业规划、未来方向
 - 想要了解自己适合什么样的工作
-- 提到「央企」「体制内」「互联网」「稳定」「高薪」等关键词
+- 提到「央企」「体制内」「互联网」「稳定」「高薪」「创业」「外企」等关键词
 
 ## 使用方式
 
@@ -24,9 +27,10 @@ description: "通过大厂/国企参照系进行职业自我认知诊断。跨�
 
 1. **暖启动**：建立信任，说明流程，管理预期
 2. **基础信息采集**：家庭背景、个人履历、消费习惯、焦虑清单、决策风格
-3. **深层诊断**：自适应展开 5 个心理学维度（大五人格、施恩职业锚、施瓦茨价值观、依恋类型、风险容忍度）
-4. **综合诊断**：整合发现，识别矛盾和盲区
-5. **报告输出**：经用户确认后，输出「自我认知雷达图 + 详细解读」
+3. **参照系选择**：根据用户输入自动推荐参照系（大厂/国企、考公、外企、创业），用户可确认或切换
+4. **深层诊断**：自适应展开 5 个心理学维度（大五人格、施恩职业锚、施瓦茨价值观、依恋类型、风险容忍度）
+5. **综合诊断**：整合发现，识别矛盾和盲区，应用动态权重矩阵
+6. **报告输出**：经用户确认后，输出「职业自我认知报告」（通用版 + 参照系专属分析）
 
 ### 文件结构
 
@@ -48,9 +52,31 @@ hemo-career-compass/
 │   ├── schein.md         # 施恩职业锚框架
 │   ├── schwartz.md       # 施瓦茨价值观框架
 │   ├── attachment.md     # 依恋类型框架
-│   └── risk-tolerance.md # 风险容忍度框架
+│   ├── risk-tolerance.md # 风险容忍度框架
+│   └── weights.md        # 动态权重矩阵（参照系差异化）
+├── referencers/          # 参照系模块（可扩展）
+│   ├── bigtech-vs-soe/   # 大厂 vs 国企
+│   │   ├── meta.json     # 参照系元数据
+│   │   ├── insights.md   # 核心洞察和金句
+│   │   ├── outcomes.md   # 出路与风险分析
+│   │   └── report-addon.md # 报告专属分析
+│   ├── civil-service/    # 考公/体制内
+│   │   ├── meta.json
+│   │   ├── insights.md
+│   │   ├── outcomes.md
+│   │   └── report-addon.md
+│   ├── foreign-enterprise/ # 外企
+│   │   ├── meta.json
+│   │   ├── insights.md
+│   │   ├── outcomes.md
+│   │   └── report-addon.md
+│   └── startup/          # 创业
+│       ├── meta.json
+│       ├── insights.md
+│       ├── outcomes.md
+│       └── report-addon.md
 └── references/
-    └── insights.md       # 两篇资料的核心洞察和金句库
+    └── insights.md       # 通用金句库和资料洞察
 ```
 
 ### 关键原则
@@ -87,4 +113,5 @@ hemo-career-compass/
 
 ## 版本历史
 
+- v1.1.0 (2026-08-09): 扩展支持多参照系（考公、外企、创业），增加动态权重矩阵、价值观冲突检测、压力类型分析、决策风格分析、Mermaid 可视化、伦理边界声明
 - v1.0.0 (2026-08-09): 初始版本，包含 5 个心理学维度、自适应对话流程、报告模板、跨平台安装脚本
