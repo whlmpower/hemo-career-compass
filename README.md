@@ -5,13 +5,22 @@
 ## 安装
 
 ```bash
-# 推荐：npx skills
-npx skills add whlmpower/hemo-career-compass
-
-# 手动复制
 git clone https://github.com/whlmpower/hemo-career-compass.git
 cp -r hemo-career-compass ~/.agent/skills/   # macOS/Linux
+# Windows PowerShell: Copy-Item -Recurse -Force .\hemo-career-compass "$env:USERPROFILE\.agent\skills\" -Recurse
 # 或复制到 %userprofile%\.agent\skills\  # Windows
+```
+
+也可通过生态工具安装：
+
+```bash
+npx skills add whlmpower/hemo-career-compass
+```
+
+或让 AI Agent 自动安装：
+
+```
+直接在对话框，输入帮我安装 https://github.com/whlmpower/hemo-career-compass
 ```
 
 ## 使用
