@@ -10,8 +10,8 @@ npx skills add whlmpower/hemo-career-compass
 
 # 手动复制
 git clone https://github.com/whlmpower/hemo-career-compass.git
-cp -r hemo-career-compass ~/.trae/skills/   # macOS/Linux
-# 或复制到 %userprofile%\.trae-cn\skills\  # Windows
+cp -r hemo-career-compass ~/.agent/skills/   # macOS/Linux
+# 或复制到 %userprofile%\.agent\skills\  # Windows
 ```
 
 ## 使用
