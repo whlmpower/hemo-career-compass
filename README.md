@@ -2,89 +2,22 @@
 
 职业罗盘。通过「多参照系」进行通用职业自我认知诊断，帮助用户深度挖掘内心，完成对未来生活期望的梳理，看清自己到底想要什么。
 
-## 快速安装
+## 安装
 
-### 方式一：一键安装脚本（推荐）
-
-**macOS / Linux:**
 ```bash
-curl -sL https://raw.githubusercontent.com/whlmpower/hemo-career-compass/main/install.sh | bash
-```
+# 推荐：npx skills
+npx skills add whlmpower/hemo-career-compass
 
-**Windows (PowerShell):**
-```powershell
-# 方式一：先克隆仓库，再运行安装脚本（推荐，已包含项目文件）
+# 手动复制
 git clone https://github.com/whlmpower/hemo-career-compass.git
-cd hemo-career-compass
-.\install.bat
-
-# 方式二：直接一键安装（无需 Git，自动从 GitHub 下载）
-powershell -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/whlmpower/hemo-career-compass/main/install.ps1' -OutFile '$env:TEMP\install.ps1'; & '$env:TEMP\install.ps1'"
+cp -r hemo-career-compass ~/.trae/skills/   # macOS/Linux
+# 或复制到 %userprofile%\.trae-cn\skills\  # Windows
 ```
 
-### 方式二：手动安装
+## 使用
 
-#### 平台安装目录对照
+安装完成后，在 AI Agent 中输入触发词即可：
 
-| 平台 | 项目级 | 全局级 (macOS/Linux) | 全局级 (Windows) |
-|---|---|---|---|
-| Trae Code | `.trae/skills/` | `~/.trae/skills/` | `%userprofile%/.trae/skills/` |
-| Codex CLI | `.agents/skills/` 或 `.codex/skills/` | `~/.codex/skills/` | `%userprofile%/.codex/skills/` |
-| Claude Code | `.claude/skills/` | `~/.claude/skills/` | `%userprofile%\.claude\skills\` |
-| 千问办公 | `.qwen/skills/` | `~/.qwenworkcn/skills/` | `%userprofile%/.qwenworkcn/skills/` |
-| WorkBuddy | 不支持 | `~/.workbuddy/skills/` | `C:\Users\<用户名>\.workbuddy\skills\` |
-
-#### 安装步骤
-
-1. 克隆或下载本仓库
-2. 将 `hemo-career-compass/` 目录复制到对应平台的 Skill 目录
-3. 重启 AI Agent
-
-### 方式三：让智能体自动安装（推荐）
-
-如果你正在使用支持 Skill 的 AI Agent，可以直接让 Agent 帮你安装：
-
-**操作步骤：**
-
-1. 在当前对话中，输入以下指令：
-
-```
-请你帮我安装以下 Skill：
-
-https://github.com/whlmpower/hemo-career-compass
-```
-
-2. Agent 会自动完成以下操作：
-   - 克隆仓库到本地
-   - 将 `hemo-career-compass/` 目录复制到对应平台的 Skill 目录
-   - 重启或重新加载 Skill
-
-3. 安装完成后，输入触发词测试：
-   - 「大厂和国企怎么选」
-   - 「考公还是去企业」
-   - 「要不要创业」
-   - 「外企怎么样」
-   - 「我该怎么选工作」
-   - 「毕业后该去哪里」
-   - 「体制内适合我吗」
-   - 「互联网加班我能不能接受」
-   - 「我适合做什么工作」
-   - 「职业规划怎么弄」
-   - 「我想转行但不知道做什么」
-   - 「工作几年了很迷茫」
-   - 「我职业选择很迷茫」
-
-**适用平台：**
-- Trae Code
-- Codex CLI
-- Claude Code
-- 千问办公
-- WorkBuddy
-- 其他支持 Skill 的 AI Agent
-
-## 验证安装
-
-安装完成后，在 AI Agent 中输入触发词：
 - 「大厂和国企怎么选」
 - 「考公还是去企业」
 - 「要不要创业」
@@ -107,10 +40,6 @@ https://github.com/whlmpower/hemo-career-compass
 hemo-career-compass/
 ├── SKILL.md              # Skill 入口文件，定义触发条件和使用方式
 ├── README.md             # 本文件，面向开发者的说明文档
-├── install.sh            # macOS/Linux 一键安装脚本
-├── install.bat           # Windows 一键安装脚本
-├── docs/
-│   └── developer.md      # 开发者详细说明
 ├── prompts/
 │   ├── system.md         # 系统提示词（核心），5层架构
 │   ├── warmup.md         # 暖启动话术库
@@ -125,25 +54,9 @@ hemo-career-compass/
 │   └── weights.md        # 动态权重矩阵（参照系差异化）
 ├── referencers/          # 参照系模块（可扩展）
 │   ├── bigtech-vs-soe/   # 大厂 vs 国企
-│   │   ├── meta.json     # 参照系元数据
-│   │   ├── insights.md   # 核心洞察和金句
-│   │   ├── outcomes.md   # 出路与风险分析
-│   │   └── report-addon.md # 报告专属分析
 │   ├── civil-service/    # 考公/体制内
-│   │   ├── meta.json
-│   │   ├── insights.md
-│   │   ├── outcomes.md
-│   │   └── report-addon.md
 │   ├── foreign-enterprise/ # 外企
-│   │   ├── meta.json
-│   │   ├── insights.md
-│   │   ├── outcomes.md
-│   │   └── report-addon.md
 │   └── startup/          # 创业
-│       ├── meta.json
-│       ├── insights.md
-│       ├── outcomes.md
-│       └── report-addon.md
 └── references/
     └── insights.md       # 通用金句库和资料洞察
 ```
@@ -181,7 +94,6 @@ hemo-career-compass/
 1. **文件读取**：Agent 需要能够读取本地文件系统（`prompts/`、`frameworks/`、`references/` 目录）
 2. **多轮对话**：Agent 需要支持上下文保持，能够跨轮次引用之前的对话内容
 3. **文件写入**：如果需要支持多 Session，Agent 需要能够写入会话摘要文件
-
 
 ## 迭代方向
 
