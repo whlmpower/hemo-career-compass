@@ -13,8 +13,13 @@ curl -sL https://raw.githubusercontent.com/whlmpower/hemo-career-compass/main/in
 
 **Windows (PowerShell):**
 ```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/whlmpower/hemo-career-compass/main/install.bat" -OutFile "install.bat"
+# 方式一：先克隆仓库，再运行安装脚本（推荐，已包含项目文件）
+git clone https://github.com/whlmpower/hemo-career-compass.git
+cd hemo-career-compass
 .\install.bat
+
+# 方式二：直接一键安装（无需 Git，自动从 GitHub 下载）
+powershell -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/whlmpower/hemo-career-compass/main/install.ps1' -OutFile '$env:TEMP\install.ps1'; & '$env:TEMP\install.ps1'"
 ```
 
 ### 方式二：手动安装
