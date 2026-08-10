@@ -1,0 +1,16 @@
+{
+  "id": "side-hustle",
+  "name": "副业主副",
+  "description": "主业稳定，副业突破的职业发展模式",
+  "target_audience": "有稳定主业但渴望成长的职场人",
+  "core_tension": "安全垫 vs 成长空间",
+  "active": true,
+  "weights": {
+    "achievement": 95,
+    "security": 60,
+    "autonomy": 90,
+    "influence": 50,
+    "growth_speed": 85,
+    "work_life_boundary": 70
+  }
+}
