@@ -1,0 +1,75 @@
+{
+  "id": "education-vs-career",
+  "name": "教育路径 vs 职业路径",
+  "name_en": "Education vs Career",
+  "version": "1.0.0",
+  "created_at": "2026-08-10",
+  "updated_at": "2026-08-10",
+  "description": "针对教育路径选择的职业心理诊断参照系。覆盖考研、考公、就业、留学、读博、在职考研等决策场景，帮助用户在教育投资与职业发展之间做出理性选择。",
+  "target_audience": [
+    "正在纠结考研、考公、就业、留学的应届本科生",
+    "工作几年后考虑要不要读研的在职人士",
+    "面临保研、考研、就业、考公多选一的毕业生",
+    "硕士阶段纠结读博还是直接工作的应届硕士生"
+  ],
+  "core_conflict": "教育投资回报率的不确定性 vs 职业发展的时效性",
+  "keywords": [
+    "考研", "考公", "就业", "留学", "读博", "硕博连读",
+    "直博", "非全日制", "在职考研", "先就业再考研",
+    "学历溢价", "机会成本", "教育投资", "职业路径",
+    "side hustle", "副业", "自媒体", "变现"
+  ],
+  "triggers": [
+    "考研还是就业",
+    "要不要考研",
+    "考研还是考公",
+    "读博还是工作",
+    "要不要读研",
+    "全日制还是非全日制",
+    "国内读研还是留学",
+    "先就业还是先考研",
+    "在职考研",
+    "学历焦虑",
+    "学历贬值",
+    "研究生学历",
+    "硕士学历",
+    "本科学历不够",
+    "想提升学历",
+    "考研性价比"
+  ],
+  "related_referencers": [
+    "bigtech-vs-soe",
+    "civil-service",
+    "foreign-enterprise",
+    "startup",
+    "side-hustle"
+  ],
+  "diagnostic_dimensions": [
+    "bigfive",
+    "career-anchor",
+    "schwartz-values",
+    "risk-tolerance",
+    "family-anchor",
+    "education-fit"
+  ],
+  "decision_layers": {
+    "undergraduate": {
+      "name": "本科层决策",
+      "audience": "应届本科生",
+      "options": ["考研", "考公", "直接就业", "留学"],
+      "time_cost": "2-4年"
+    },
+    "master": {
+      "name": "硕士层决策",
+      "audience": "应届硕士生",
+      "options": ["读博", "直接工作", "硕博连读", "直博"],
+      "time_cost": "4-6年"
+    },
+    "professional": {
+      "name": "在职层决策",
+      "audience": "工作几年后的职场人士",
+      "options": ["在职考研", "保持现状", "跳槽"],
+      "time_cost": "2-3年"
+    }
+  }
+}
